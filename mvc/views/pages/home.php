@@ -1,8 +1,5 @@
-
 <?php 
-
-$data_show = json_decode($data["giaovien"], true);
-// print_r($data_show);
+// print_r($data["giaovien"]);
 ?>
 <div class="content">
 
@@ -16,7 +13,7 @@ $data_show = json_decode($data["giaovien"], true);
          <!-- bnt add-->
          <div class="btn-toolbar justify-content-between">
            <div>
-             <h4 class="card-title ">Simple Table</h4>
+             <h4 class="card-title ">Danh sách sinh viên</h4>
              <p class="card-category"> Here is a subtitle for this table</p>
            </div>
            <div>
@@ -33,16 +30,16 @@ $data_show = json_decode($data["giaovien"], true);
            <table class="table">
              <thead class=" text-primary">
                <th>
-                 Mã giáo viên
+                 Mã sinh viên
                </th>
                <th>
-                 Tên giáo viên
+                 Tên sinh viên
                </th>
                <th>
-                 Giới tính
+                 Lớp
                </th>
                <th>
-                 Quê quán
+                 Khoa
                </th>
                <th>
                  <p class="thEnd">chọn</p>
@@ -54,28 +51,25 @@ $data_show = json_decode($data["giaovien"], true);
               
               ?>
               <?php 
-              foreach($data_show as $value){
-                $gt = "Nu";
-                if($value["GioiTinh"])
-                $gt = "Nam";
+              foreach($data["home"] as $value){
              ?>
 
                 <tr>
-                 <td class="<?php echo $value["MaGV"]?>" data-id="MaGV"> 
-                   <?php echo $value["MaGV"]?>
+                 <td>
+                   <?php echo $value["MaSV"]?>
                  </td>
                  <td>
-                   <a href="#" id="<?php echo $value["MaGV"]?>" class="MaGV <?php echo $value["MaGV"]?>" data-toggle="modal" data-target="#exampleModal2"
-                     data-whatever="@mdo" data-id="TenGV"><?php echo $value["TenGV"]?></a>
+                   <a href="#" class="" data-toggle="modal" data-target="#exampleModal2"
+                     data-whatever="@mdo"><?php echo $value["TenSV"]?></a>
                  </td>
-                 <td class="<?php echo $value["MaGV"]?>" data-id="GioiTinh">
-                    <?php echo $gt;?>  
+                 <td>
+                 <?php echo $value['TenLop'];?>
                  </td>
-                 <td class="<?php echo $value["MaGV"]?>" data-id="QueQuan">
-                 <?php echo $value["QueQuan"]?>
+                 <td>
+                 <?php echo $value["TenKhoa"]?>
                  </td>
                  <td class="text-primary">
-                   <a href="javascript:;" class="btn btn-primary btn-round deleteGVBtn" data-id="<?php echo $value["MaGV"]?>">Xóa</a>
+                   <a href="javascript:;" class="btn btn-primary btn-round">Xóa</a>
                  </td>
                </tr>
 
@@ -92,8 +86,3 @@ $data_show = json_decode($data["giaovien"], true);
 <!-- xóa ở trên tới đay -->
 
 </div>
-
-
-<script src="./mvc/public/assets/js/funcpages_js/updateGV.js"></script>
-<script src="./mvc/public/assets/js/funcpages_js/deleteGV.js"></script>
-<script src="./mvc/public/assets/js/funcpages_js/addGV.js"></script>
