@@ -26,8 +26,32 @@ class DiemThi extends Controller
         ]);
       
     }
+    
     public function add(){
-        print_r($_POST);
+        $diemthi = $this->model("DiemThiModel");
+        $kq = $diemthi->addDiemThi($_POST['MaSV'], $_POST['MaMH'], $_POST['DiemThi'],$_POST['LanThi']);
+        header('location: http://qlsv.com:81/diemthi');
+    }
+
+    public function delete($MaSV, $MaMH){
+        $diemthi = $this->model("DiemThiModel");
+        $diemthi->deleteDiemThi($MaSV, $MaMH);
+        header('location: http://qlsv.com:81/diemthi');
+    }
+
+    public function updateView($MaSV=null,$MaMH=null,$DiemThi=null,$LanThi=null){
+        $data =[$MaSV,$MaMH,$DiemThi,$LanThi];
+        $this->view("master_1",[
+            "page"=>"updateDT" ,
+            "updateDT"=>$data
+        ]);
+    }
+
+    public function Update(){
+        $diemthi = $this->model("DiemThiModel");
+        $kq = $diemthi->updateDiemThi($_POST['DiemThi'], $_POST['LanThi'], $_POST['MaSV'],$_POST['MaMH']);
+        header('location: http://qlsv.com:81/diemthi');
+        
     }
 }
 ?>

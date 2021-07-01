@@ -14,7 +14,7 @@ class GiaoVienModel extends MySQLDB
     public function updateGiaoVien($id, $name, $home){
         $getData = $this->conn->prepare("update GIAOVIEN set TenGV=?, QueQuan=? where MaGV=?");
         $data = [$name, $home, $id];
-        $stmt = $getData->execute($data );
+        $stmt = $getData->execute($data);
         $num = $getData->rowCount();
         return json_encode($getData->rowCount());
     }
