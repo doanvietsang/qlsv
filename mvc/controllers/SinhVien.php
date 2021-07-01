@@ -1,7 +1,8 @@
 <?php
-class SinhVien extends Controller{
-
-    public function Default(){
+class SinhVien extends Controller
+{
+    public function Default()
+    {
         $sinhvien = $this->model("SinhVienModel");
         $data = $sinhvien->display();
 
@@ -12,11 +13,12 @@ class SinhVien extends Controller{
         ]);
     }
 
-    public function AddSV(){        
-        if(isset($_POST)){
+    public function AddSV()
+    {
+        if (isset($_POST)) {
             $sv_data = [];
             $sinhvien = $this->model("SinhVienModel");
-            foreach($_POST as $value){
+            foreach ($_POST as $value) {
                 array_push($sv_data, $value);
             }
             $sinhvien->AddSV($sv_data);
@@ -24,8 +26,9 @@ class SinhVien extends Controller{
         }
     }
 
-    public function Update($masv = null, $tensv = null, $gioitinh = 1, $malop = null, $quequan = null){
-        if(isset($_POST['submit'])){
+    public function Update($masv = null, $tensv = null, $gioitinh = 1, $malop = null, $quequan = null)
+    {
+        if (isset($_POST['submit'])) {
             $sinhvien = $this->model("SinhVienModel");
             $sinhvien->UpdateSinhVien([$_POST['TenSV'], $_POST['GioiTinh'], $_POST['MaLop'], $_POST['QueQuan'], $_POST['MaSV']]);
             header('location: /Sinhvien');
@@ -33,16 +36,15 @@ class SinhVien extends Controller{
 
         $this->view("master_1", [
             "page"=>"updatesinhvien",
-            "sinhvien"=>[$masv, $tensv, $gioitinh, $malop, $quequan]       
+            "sinhvien"=>[$masv, $tensv, $gioitinh, $malop, $quequan]
         ]);
     }
 
-    public function Delete($masv = []){
+    public function Delete($masv = [])
+    {
         $sinhvien = $this->model("SinhVienModel");
         $sinhvien->DeleteSinhVien($masv);
         header('location: /SinhVien');
-    }
-        ]);
     }
 }
 ?>
