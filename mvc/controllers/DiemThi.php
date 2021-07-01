@@ -9,20 +9,8 @@ class DiemThi extends Controller
 
         $this->view("master_1",[
             "page"=>"diemthi",
-            "func_page"=>[
-                "addDT"
-                ],
-            "diemthi"=>$data
-        ]);
-      
-    }
-    public function Search($MaGV){
-        $giaovien = $this->model("GiaoVienModel");
-        $data = $giaovien->getGiaoVienWithMaGV($MaGV);
-
-        $this->view("master_1",[
-            "page"=>"giaovien",
-            "giaovien"=>$data
+            "diemthi"=>$data,
+            "func_page"=>["adddiemthi"]
         ]);
       
     }
